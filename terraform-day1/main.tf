@@ -4,11 +4,17 @@ resource "aws_vpc" "name" {
     Name = "terra-vpc"
   }
 }
-resource "aws_subnet" "name" {
+resource "aws_subnet" "subnet-1" {
+  vpc_id = aws_vpc.name.id
+  cidr_block = "10.0.0.0/24"
+  tags = {
+    Name = "subnet-1"
+  }
+}
+resource "aws_subnet" "subnet-2" {
   vpc_id = aws_vpc.name.id
   cidr_block = "10.0.1.0/24"
   tags = {
-    Name = "terra-subnet1"
+    Name = "subnet-2"
   }
-
 }
